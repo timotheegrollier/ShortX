@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+
+body{
+    background: #777;
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat',sans-serif;
+}
+
+.wrapper{
+    width: 680px;
+    max-width: 70%;
+    margin: 10em auto;
+}
+
+input[type="text"]{
+    font-family:'Montserrat',sans-serif ;
+    width: 100%;
+    padding: 0.8em 0.5em;
+    text-align: center;
+    font-size: 1.3em;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    color:#718096
+}
+
+a{
+    color: #BEE3F8;
+    line-height: 2.5em;
+}
+
+.error-message {
+    margin-top: 2em;
+    color: #FED7D7;
+    font-weight: bold;
+}

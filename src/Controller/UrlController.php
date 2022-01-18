@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Url;
-use App\Utilis\Str;
 use App\Repository\UrlRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,17 +15,13 @@ use Symfony\Component\Validator\Constraints\Url as UrlConstraint;
 
 class UrlController extends AbstractController
 {
-    private $urlRepository;
 
-    public function __construct(UrlRepository $urlRepository)
-    {
-        $this->urlRepository = $urlRepository;
-    }
+
+
     /**
      * @Route("/", name="app_home", methods={"GET","POST"})
-     * @Route("/", name="app_url_create", methods={"GET","POST"})
      */
-    public function create(Request $request, EntityManagerInterface $em): Response
+    public function create(Request $request, EntityManagerInterface $em, UrlRepository $urlRepository): Response
     {
         $form =  $this->createFormBuilder()
             ->add('original', TextType::class, [
@@ -46,7 +41,7 @@ class UrlController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // dd($request->request->all());
-            $url = $this->urlRepository->findOneBy(['original' => $form->get('original')->getData()]);
+            $url = $urlRepository->findOneBy(['original' => $form->get('original')->getData()]);
 
             if ($url) {
                 return $this->redirectToRoute('app_url_preview', ['shortened' => $url->getShortened()]);
@@ -54,7 +49,7 @@ class UrlController extends AbstractController
 
             $url = new Url;
             $url->setOriginal($form['original']->getData());
-            $url->setShortened($this->getUniqueShortenedString());
+
             $em->persist($url);
             $em->flush();
 
@@ -86,14 +81,5 @@ class UrlController extends AbstractController
     }
 
 
-    private function getUniqueShortenedString(): string
-    {
-        $shortened = Str::random(6) ;
-
-        if ($this->urlRepository->findOneBy(['shortened' => $shortened])) {
-            return $this->getUniqueShortenedString();
-        }
-
-        return $shortened;
-    }
+   
 }

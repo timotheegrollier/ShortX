@@ -2,8 +2,14 @@
 
 
 {% block body %}
-<h1>The best URL shortner</h1>
-{{form_start(form)}}
-{{form_widget(form)}}
-{{form_end(form)}}
+	<h1>The best URL shortener</h1>
+	{{form_start(form)}}
+	{{form_widget(form.original)}}
+
+	{% for error in form.original.vars.errors %}
+		<div class="error-message">
+			{{error.message}}
+		</div>
+	{% endfor %}
+	{{form_end(form)}}
 {% endblock %}

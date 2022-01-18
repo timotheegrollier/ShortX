@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Utilis;
+namespace App\Utils;
 
 class Str
 {
