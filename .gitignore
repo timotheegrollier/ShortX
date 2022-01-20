@@ -18,3 +18,5 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+audio.key
+ubuntu@132.226.206.213

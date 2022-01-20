@@ -2,10 +2,14 @@
 
 
 {% block body %}
-	<h1>Yay! Here is your shortened URL:
+<div id="preview">
+	<h2>Yay! Here is your shortened URL:
+	</h2>
+	<h3>
 		<a href="{{path('app_url_show',{shortened:url.shortened})}}">
 			{{url('app_url_show',{shortened:url.shortened})}}
 		</a>
-	</h1>
+	</h3>
+</div>
 	<a href="{{path('app_home')}}">Go back</a>
 {% endblock %}

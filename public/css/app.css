@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@font-face {
+    font-family: Title;
+    src: url("./WeAreDIMDAM.otf") format("opentype");
+}
 
 
 body{
@@ -8,18 +12,21 @@ body{
     color: white;
     text-align: center;
     font-family: 'Montserrat',sans-serif;
+    height: 100vh;
 }
 
 .wrapper{
-    width: 680px;
-    max-width: 70%;
-    margin: 10em auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 55%;
+    flex-direction: column;
 }
 
 input[type="text"]{
     font-family:'Montserrat',sans-serif ;
-    width: 100%;
-    padding: 0.8em 0.5em;
+    width: 80%;
+    padding: 0.8em 0.5em !important;
     text-align: center;
     font-size: 1.3em;
     border-radius: 3px;
@@ -27,18 +34,58 @@ input[type="text"]{
     outline: none;
     color:#718096
 }
+form{
+    width: 100%;
+    margin-top: 30px !important;
+}
+
+h1{
+    font-family: Title;
+    font-size: 4.5em;
+    letter-spacing: 4px;
+    color: #fffffff1;
+}
+h2{
+    color: #ffffffea;
+}
 
 a{
     color: #BEE3F8;
-    line-height: 2.5em;
+}
+
+footer a {
+    text-decoration: none;
 }
 
 .error-message {
-    margin-top: 2em;
+    margin-top: 2em !important;
     color: #FED7D7;
     font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
+*{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#preview{
+    margin-top: 40px !important;
+}
+
+h3{
+    margin-top: 40px !important;
+}
 
 @keyframes gradient {
 	0% {
@@ -50,4 +97,11 @@ a{
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+
+@media screen and (min-width: 776px){
+    h2, h3{
+        font-size: 2em !important;
+    }
 }
